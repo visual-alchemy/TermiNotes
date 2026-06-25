@@ -32,6 +32,37 @@ graph TB
 
 ---
 
+## 🔄 User Flow & Navigation
+
+The diagram below maps the runtime interactive flows and key shortcuts inside the workspace:
+
+```mermaid
+graph TB
+    Start([Launch TermiNotes]) --> Empty[Empty State: Monospace Intro]
+    
+    Empty -->|Cmd+Shift+N| CreateDir[Create Folder]
+    Empty -->|Click Note/Tab| OpenNote[Open Note in Tab]
+    
+    CreateDir -->|Cmd+N| CreateNote[Create Note in Folder]
+    CreateNote --> OpenNote
+    
+    OpenNote --> EditorMode[Editor View: Monospace Writing Canvas]
+    
+    EditorMode -->|Type / Edit| AutoSave[Real-time Local Autosave & Syntax Highlights]
+    
+    EditorMode -->|Cmd+R / Action Button| PreviewMode[Preview View: GitHub HTML Style]
+    PreviewMode -->|Cmd+R / Action Button| EditorMode
+    
+    EditorMode -->|Cmd+Shift+bracket_left / bracket_right| SwitchTab[Cycle Active Tabs]
+    EditorMode -->|Cmd+W / Click x| CloseTab[Close Tab]
+    
+    EditorMode -->|Drag Outline Item| MoveNote[Drag & Drop Note to Another Folder]
+    EditorMode -->|Cmd+E| ExportNote[Export Note as .md File]
+    EditorMode -->|Cmd+Backspace| DeleteNote[Delete Note with Confirm Alert]
+```
+
+---
+
 ## ⚡ Features
 
 * **Multi-Tab Workspace**: Open notes in tabs, navigate them using keyboard shortcuts, and hover-to-close.
